@@ -37,17 +37,17 @@ The parts:
 [x] - How well are you being supported?
 ![support](wireframes/supported.png)
 
-- Any comments you want to leave?
+[x] - Any comments you want to leave?
 ![comments](wireframes/comments.png)
 
-While there is no nav bar, each part of the form should be at its own route. Clicking next should move the user to the appropriate step in the process.
+[x] While there is no nav bar, each part of the form should be at its own route. Clicking next should move the user to the appropriate step in the process.
 
 ### Input Validation
 
 Each step should only allow the user to advance to the next step if a score was provided. 
 Be sure to tell the user in some way that a value must be provided.
 
-The `Comments` step does not need to be validated, an empty value is okay.
+[x] The `Comments` step does not need to be validated, an empty value is okay.
 
 ## THE REVIEW COMPONENT
 
