@@ -21,7 +21,14 @@ const Feeling = () => {
             <div className="feelingInnerDiv">
                 <form onSubmit={handleSubmit}>
                     <label className="feelingLabel">
-                        How are you feeling today?
+                        <h2 className="feelingHeader">How are you feeling today?</h2>
+                        <i>
+                            please select an option 0 through 5
+                            <br />
+                            (0 being awful and 5 being incredible)
+                            <br />then click "Next"
+                        </i>
+                        <br />
                         <br />
                         <select 
                             name="feeling" 
@@ -37,6 +44,8 @@ const Feeling = () => {
                             <option value="5">5</option>
                         </select>
                     </label>
+                    <br />
+                    <br />
                     <button 
                         type="submit"
                         className="nextButton"

@@ -21,7 +21,15 @@ const Support = () => {
             <div className="supportInnerDiv">
                 <form onSubmit={handleSubmit}>
                     <label className="supportLabel">
-                        How well do you feel supported?
+                        <h2>How well do you feel supported?</h2>
+                        <i>
+                            please select an option 0 through 5 
+                            <br />
+                            (0 being not supported and 5 being totally supported)
+                            <br />
+                            then click "Next"
+                        </i>
+                        <br />
                         <br />
                         <select 
                             name="support" 
@@ -37,6 +45,8 @@ const Support = () => {
                             <option value="5">5</option>
                         </select>
                     </label>
+                    <br />
+                    <br />
                     <button 
                         type="submit"
                         className="nextButton"

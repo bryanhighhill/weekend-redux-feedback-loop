@@ -19,8 +19,7 @@ const Comments = () => {
             <div className="commentsInnerDiv">
                 <form onSubmit={handleSubmit}>
                     <label className="commentsLabel">
-                        Please share any comments you may have
-                        <br />
+                        <h2>Please share any comments you may have</h2>
                         <input 
                             name="comments" 
                             value={comments}

@@ -21,7 +21,15 @@ const Understanding = () => {
             <div className="understandingInnerDiv">
                 <form onSubmit={handleSubmit}>
                     <label className="understandingLabel">
-                        How well are you understanding the content?
+                        <h2>How well do you understand the content?</h2>
+                        <i>
+                            please select an option 0 through 5
+                            <br />
+                            (0 being "I have no clue what I'm doing" and 5 being "I totally get it")
+                            <br />
+                            then click "Next"
+                        </i>
+                        <br />
                         <br />
                         <select 
                             name="understanding"
@@ -38,6 +46,8 @@ const Understanding = () => {
                             <option value="5">5</option>
                         </select>
                     </label>
+                    <br />
+                    <br />
                     <button 
                         type="submit"
                         className="nextButton"
