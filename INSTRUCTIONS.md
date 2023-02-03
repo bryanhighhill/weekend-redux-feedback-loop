@@ -44,8 +44,8 @@ The parts:
 
 ### Input Validation
 
-Each step should only allow the user to advance to the next step if a score was provided. 
-Be sure to tell the user in some way that a value must be provided.
+[x] Each step should only allow the user to advance to the next step if a score was provided. 
+[x] Be sure to tell the user in some way that a value must be provided.
 
 [x] The `Comments` step does not need to be validated, an empty value is okay.
 
@@ -57,9 +57,11 @@ The last step of the process will allow the user to review their feedback. Users
 
 ## SUBMIT THE FEEDBACK
 
-The `Review` step needs to have a submit button which will be clicked on to actually submit the completed feedback to the server.
+[x] The `Review` step needs to have a submit button which will be clicked on to actually submit the completed feedback to the server.
 
-When the submit button is clicked, save the submission in the database. The user should see a submission success page. They can then click the button to take a new survey, which needs to reset all the data and go back to the first step.
+[x] When the submit button is clicked, save the submission in the database. 
+[x] The user should see a submission success page. 
+[x] They can then click the button to take a new survey, which needs to reset all the data and go back to the first step.
 
 ![understanding](wireframes/page-five.png)
 

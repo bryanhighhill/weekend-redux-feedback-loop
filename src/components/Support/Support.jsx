@@ -6,14 +6,18 @@ const Support = () => {
     const [support, setSupport] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
+    const [buttonDisable, setButtonDisable] = useState(true);
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_SUPPORT', payload: support});
         history.push('/comments');
+    }
 
-
+    const changeHandler = (value) => {
+        setSupport(value);
+        setButtonDisable(false);
     }
 
     return(
@@ -33,10 +37,13 @@ const Support = () => {
                         <br />
                         <select 
                             name="support" 
-                            value={support}
+                            defaultValue="default"
                             className="supportList"
-                            onChange={(e) => setSupport(e.target.value)}
+                            onChange={(e) => changeHandler(e.target.value)}
                         >
+                            <option value="default" disabled={true}>
+                                --Choose an option--
+                            </option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -47,7 +54,8 @@ const Support = () => {
                     </label>
                     <br />
                     <br />
-                    <button 
+                    <button
+                        disabled={buttonDisable} 
                         type="submit"
                         className="nextButton"
                     >

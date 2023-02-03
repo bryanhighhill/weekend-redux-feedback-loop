@@ -6,14 +6,18 @@ const Understanding = () => {
     const [understanding, setUnderstanding] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
+    const [buttonDisable, setButtonDisable] = useState(true);
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_UNDERSTANDING', payload: understanding});
         history.push('/support');
+    }
 
-
+    const changeHandler = (value) => {
+        setUnderstanding(value);
+        setButtonDisable(false);
     }
 
     return(
@@ -34,10 +38,13 @@ const Understanding = () => {
                         <select 
                             name="understanding"
                             title="Understanding Level" 
-                            value={understanding}
+                            defaultValue="default"
                             className="understandingList"
-                            onChange={(e) => setUnderstanding(e.target.value)}
+                            onChange={(e) => changeHandler(e.target.value)}
                         >
+                            <option value="default" disabled={true}>
+                                --Choose an option--
+                            </option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -48,7 +55,8 @@ const Understanding = () => {
                     </label>
                     <br />
                     <br />
-                    <button 
+                    <button
+                        disabled={buttonDisable} 
                         type="submit"
                         className="nextButton"
                     >

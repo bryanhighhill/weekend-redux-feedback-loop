@@ -1,5 +1,5 @@
-import { useSelector } from 'react-redux';
-import { useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 
 const Review = () => {
     const feeling = useSelector(store => store.feeling);
@@ -7,6 +7,7 @@ const Review = () => {
     const support = useSelector(store => store.support);
     const comments = useSelector(store => store.comments);
     const dispatch = useDispatch();
+    const history = useHistory();
 
 const newFeedback = {
         feeling,
@@ -17,8 +18,8 @@ const newFeedback = {
 
 const onClickHandler = () => {
     return (
-        // console.log('newFeedback: ', newFeedback)
-        dispatch({type: 'POST_FEEDBACK', payload: newFeedback})
+        dispatch({type: 'POST_FEEDBACK', payload: newFeedback}),
+        history.push('/success')
     )
 }
 

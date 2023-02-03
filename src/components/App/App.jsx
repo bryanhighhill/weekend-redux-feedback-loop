@@ -7,6 +7,7 @@ import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
+import SuccessPage from '../SuccessPage/SuccessPage';
 
 function App() {
 
@@ -33,6 +34,9 @@ function App() {
         </Route>
         <Route path="/review" exact>
           <Review />
+        </Route>
+        <Route path="/success" exact>
+          <SuccessPage />
         </Route>
 
       </div>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -6,15 +6,19 @@ const Feeling = () => {
     const [feeling, setFeeling] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
+    const [buttonDisable, setButtonDisable] = useState(true);
+
+    const changeHandler = (value) => {
+        setFeeling(value);
+        setButtonDisable(false);
+    }
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: 'SET_FEELING', payload: feeling});
-        history.push('/understanding');
-
-
-    }
+        dispatch({type: 'SET_FEELING', payload: feeling}),
+        history.push('/understanding')
+        }
 
     return(
         <div className="feelingOuterDiv">
@@ -32,10 +36,13 @@ const Feeling = () => {
                         <br />
                         <select 
                             name="feeling" 
-                            value={feeling}
+                            defaultValue="default"
                             className="feelingList"
-                            onChange={(e) => setFeeling(e.target.value)}
+                            onChange={(e) => changeHandler(e.target.value)}
                         >
+                            <option value="default" disabled={true}>
+                                --Choose an option--
+                            </option>
                             <option value="0">0</option>
                             <option value="1">1</option>
                             <option value="2">2</option>
@@ -46,7 +53,8 @@ const Feeling = () => {
                     </label>
                     <br />
                     <br />
-                    <button 
+                    <button
+                        disabled={buttonDisable} 
                         type="submit"
                         className="nextButton"
                     >
@@ -57,5 +65,7 @@ const Feeling = () => {
         </div>
     )
 }
+
+
 
 export default Feeling;
