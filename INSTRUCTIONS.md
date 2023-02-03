@@ -31,7 +31,7 @@ The parts:
 [x] - How are you feeling today?
 ![feeling](wireframes/feeling.png)
 
-- How well are you understanding the content?
+[x] - How well are you understanding the content?
 ![understanding](wireframes/understanding.png)
 
 - How well are you being supported?
