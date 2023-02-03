@@ -12,7 +12,7 @@ const ratings = (state = 0, action) => {
     } else if 
         (action.type === 'SET_UNDERSTANDING') {
             return action.payload;
-        }
+    }
     return state;
 }
 
