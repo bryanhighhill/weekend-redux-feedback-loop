@@ -3,6 +3,7 @@ import axios from 'axios';
 import { HashRouter as Router, Route, Link, useHistory } from 'react-router-dom';
 import './App.css';
 import Feeling from '../Feeling/Feeling'
+import Understanding from '../Understanding/Understanding';
 
 function App() {
 
@@ -15,9 +16,13 @@ function App() {
         </header>
 
         {/* define route paths here */}
-        <Route path="/feeling" exact>
+        <Route path="/" exact>
           <Feeling />
         </Route>
+        <Route path="/understanding" exact>
+          <Understanding />
+        </Route>
+
       </div>
     </Router>
   );
