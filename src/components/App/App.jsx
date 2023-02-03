@@ -5,6 +5,7 @@ import './App.css';
 import Feeling from '../Feeling/Feeling'
 import Understanding from '../Understanding/Understanding';
 import Support from '../Support/Support';
+import Comments from '../Comments/Comments';
 
 function App() {
 
@@ -25,6 +26,9 @@ function App() {
         </Route>
         <Route path="/support" exact>
           <Support />
+        </Route>
+        <Route path="/comments" exact>
+          <Comments />
         </Route>
 
       </div>
