@@ -1,14 +1,24 @@
 import { useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 
 const Review = () => {
     const feeling = useSelector(store => store.feeling);
     const understanding = useSelector(store => store.understanding);
     const support = useSelector(store => store.support);
     const comments = useSelector(store => store.comments);
+    const dispatch = useDispatch();
+
+const newFeedback = {
+        feeling,
+        understanding,
+        support,
+        comments
+}
 
 const onClickHandler = () => {
     return (
-        console.log('you clicked submit')
+        // console.log('newFeedback: ', newFeedback)
+        dispatch({type: 'POST_FEEDBACK', payload: newFeedback})
     )
 }
 

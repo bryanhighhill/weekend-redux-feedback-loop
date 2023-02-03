@@ -5,6 +5,7 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import axios from 'axios';
 
 const feeling = (state = 0, action) => {
     if (action.type === 'SET_FEELING') {
@@ -34,12 +35,21 @@ const comments = (state = '', action) => {
     return state;
 }
 
+const postFeedback = (state = {}, action) => {
+    if (action.type === 'POST_FEEDBACK') {
+        console.log('made post request with: ', action.payload);
+        axios.post('/feedback', action.payload);
+    }
+    return state;
+}
+
 const reduxStore = createStore(
     combineReducers({
         feeling,
         understanding,
         support,
-        comments
+        comments,
+        postFeedback
     })
 );
 
