@@ -1,6 +1,8 @@
 # Redux Feedback Loop
 
-For this assignment, you will be creating a reflection/feedback form modeled after Prime's system. Feedback will be collected over 4 views. In a separate review page, display the current feedback values and a submit button. and when all steps are complete, your app will save the feedback in the database. 
+For this assignment, you will be creating a reflection/feedback form modeled after Prime's system. 
+Feedback will be collected over 4 views. 
+In a separate review page, display the current feedback values and a submit button. and when all steps are complete, your app will save the feedback in the database. 
 
 ### SETUP
 
@@ -9,6 +11,7 @@ Create your database and tables using the provided `data.sql` file. Start the se
 ```
 npm install
 npm run server
+npm install react-redux
 ```
 
 Now that the server is running, open a new terminal tab with `cmd + t` and start the react client app.
@@ -27,10 +30,13 @@ There will be 4 views for the form parts.
 The parts:
 - How are you feeling today?
 ![feeling](wireframes/feeling.png)
+
 - How well are you understanding the content?
 ![understanding](wireframes/understanding.png)
+
 - How well are you being supported?
 ![support](wireframes/supported.png)
+
 - Any comments you want to leave?
 ![comments](wireframes/comments.png)
 
@@ -38,7 +44,8 @@ While there is no nav bar, each part of the form should be at its own route. Cli
 
 ### Input Validation
 
-Each step should only allow the user to advance to the next step if a score was provided. Be sure to tell the user in some way that a value must be provided.
+Each step should only allow the user to advance to the next step if a score was provided. 
+Be sure to tell the user in some way that a value must be provided.
 
 The `Comments` step does not need to be validated, an empty value is okay.
 
