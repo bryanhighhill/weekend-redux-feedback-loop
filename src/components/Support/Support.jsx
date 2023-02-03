@@ -11,7 +11,7 @@ const Support = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_SUPPORT', payload: support});
-        history.push('/understanding');
+        history.push('/comments');
 
 
     }

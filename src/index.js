@@ -15,6 +15,9 @@ const ratings = (state = 0, action) => {
     } else if
         (action.type === 'SET_SUPPORT') {
             return action.payload;
+    } else if
+        (action.type === 'SET_COMMENTS') {
+            return action.payload;
     }
     return state;
 }
