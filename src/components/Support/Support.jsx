@@ -2,33 +2,32 @@ import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
-const Understanding = () => {
-    const [understanding, setUnderstanding] = useState(0);
+const Support = () => {
+    const [support, setSupport] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
-        dispatch({type: 'SET_UNDERSTANDING', payload: understanding});
-        history.push('/support');
+        dispatch({type: 'SET_SUPPORT', payload: support});
+        history.push('/understanding');
 
 
     }
 
     return(
-        <div className="understandingOuterDiv">
-            <div className="understandingInnerDiv">
+        <div className="supportOuterDiv">
+            <div className="supportInnerDiv">
                 <form onSubmit={handleSubmit}>
-                    <label className="understandingLabel">
-                        How well are you understanding the content?
+                    <label className="supportLabel">
+                        How well do you feel supported?
                         <br />
                         <select 
-                            name="understanding"
-                            title="Understanding Level" 
-                            value={understanding}
-                            className="understandingList"
-                            onChange={(e) => setUnderstanding(e.target.value)}
+                            name="support" 
+                            value={support}
+                            className="supportList"
+                            onChange={(e) => setSupport(e.target.value)}
                         >
                             <option value="0">0</option>
                             <option value="1">1</option>
@@ -50,4 +49,4 @@ const Understanding = () => {
     )
 }
 
-export default Understanding;
+export default Support;
