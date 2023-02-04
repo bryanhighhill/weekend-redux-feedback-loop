@@ -18,14 +18,15 @@ const Feeling = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_FEELING', payload: feeling}),
-        history.push('/understanding')
+        setUpdateButton(true);
+        history.push('/understanding');
         }
 
     //function to update feedback and return to review page
     const updateFeedback = (e) => {
         e.preventDefault();
         dispatch({type: 'UPDATE_FEEDBACK', payload: feeling}),
-        history.push('/review')
+        history.push('/review');
     }
 
     return(

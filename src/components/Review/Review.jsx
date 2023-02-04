@@ -24,30 +24,6 @@ const onClickHandler = () => {
     )
 }
 
-const feelingClickHandler = () => {
-    return (
-        console.log('clicked on button to change your feeling feedback')
-    )
-}
-
-const understandingClickHandler = () => {
-    return (
-        console.log('clicked on button to change your understanding feedback')
-    )
-}
-
-const supportClickHandler = () => {
-    return (
-        console.log('clicked on button to change your support feedback')
-    )
-}
-
-const commentsClickHandler = () => {
-    return (
-        console.log('clicked on button to change your comments')
-    )
-}
-
     return (
         <div className="reviewOuterDiv">
             <div className="reviewInnerDiv">

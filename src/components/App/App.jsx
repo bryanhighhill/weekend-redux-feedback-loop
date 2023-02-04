@@ -8,6 +8,7 @@ import Support from '../Support/Support';
 import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import SuccessPage from '../SuccessPage/SuccessPage';
+import StatusBar from '../StatusBar/StatusBar';
 
 function App() {
 
@@ -19,7 +20,7 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
         
-        <div class="progress-bar-div"> --PROGRESS BAR HERE-- </div>
+        <div class="progress-bar-div"> <StatusBar /></div>
 
         {/* define route paths here */}
         <Route path="/" exact>
