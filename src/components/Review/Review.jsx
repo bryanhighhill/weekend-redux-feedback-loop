@@ -1,5 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Review = () => {
     const feeling = useSelector(store => store.feeling);

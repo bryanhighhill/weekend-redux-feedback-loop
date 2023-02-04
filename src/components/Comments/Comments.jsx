@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -6,6 +6,11 @@ const Comments = () => {
     const [comments, setComments] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
+    const pageId = 4;
+
+    useEffect(() => {
+        dispatch({type: 'SET_ID', payload: pageId})
+    })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {

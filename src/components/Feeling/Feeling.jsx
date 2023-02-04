@@ -1,4 +1,4 @@
-import { useState, useRoute } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
@@ -8,6 +8,11 @@ const Feeling = () => {
     const [feeling, setFeeling] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
     const [updateButton, setUpdateButton] = useState(false);
+    const pageId = 1;
+
+    useEffect(() => {
+        dispatch({type: 'SET_ID', payload: pageId})
+    })
 
     const changeHandler = (value) => {
         setFeeling(value);

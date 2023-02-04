@@ -35,6 +35,14 @@ const comments = (state = '', action) => {
     return state;
 }
 
+// variable to keep track of which page is being viewed - part of stretch goal 1
+const pageId = (state = 0, action) => {
+    if (action.type === 'SET_ID') {
+        return action.payload;
+    }
+    return state;
+}
+
 //POST request to add feedback
 const postFeedback = (state = {}, action) => {
     if (action.type === 'POST_FEEDBACK') {
@@ -61,6 +69,7 @@ const reduxStore = createStore(
         support,
         comments,
         postFeedback,
+        pageId
         // changeFeedback
     })
 );
