@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Understanding = () => {
     const [understanding, setUnderstanding] = useState(0);
@@ -8,6 +8,7 @@ const Understanding = () => {
     const dispatch = useDispatch();
     const [buttonDisable, setButtonDisable] = useState(true);
     const pageId = 2;
+    const pageCompleted = useSelector(store => store.understandingCompleted);
 
     useEffect(() => {
         dispatch({type: 'SET_ID', payload: pageId})
@@ -17,6 +18,13 @@ const Understanding = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_UNDERSTANDING', payload: understanding});
+        dispatch({type: 'SET_UNDERSTANDING_COMPLETED', payload: true})
+        
+        if (pageCompleted) {
+            return (
+                history.push('/review') 
+            )
+        }
         history.push('/support');
     }
 

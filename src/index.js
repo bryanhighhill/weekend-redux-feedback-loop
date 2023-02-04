@@ -43,6 +43,35 @@ const pageId = (state = 0, action) => {
     return state;
 }
 
+//keep track of if a page has been submitted
+const feelingCompleted = (state = false, action) => {
+    if (action.type === 'SET_FEELING_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const understandingCompleted = (state = false, action) => {
+    if (action.type === 'SET_UNDERSTANDING_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const supportCompleted = (state = false, action) => {
+    if (action.type === 'SET_SUPPORT_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const commentsCompleted = (state = false, action) => {
+    if (action.type === 'SET_COMMENTS_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
 //POST request to add feedback
 const postFeedback = (state = {}, action) => {
     if (action.type === 'POST_FEEDBACK') {
@@ -69,8 +98,11 @@ const reduxStore = createStore(
         support,
         comments,
         postFeedback,
-        pageId
-        // changeFeedback
+        pageId,
+        feelingCompleted,
+        understandingCompleted,
+        supportCompleted,
+        commentsCompleted
     })
 );
 

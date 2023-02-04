@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Feeling = () => {
     const history = useHistory();
@@ -9,6 +9,7 @@ const Feeling = () => {
     const [buttonDisable, setButtonDisable] = useState(true);
     const [updateButton, setUpdateButton] = useState(false);
     const pageId = 1;
+    const pageCompleted = useSelector(store => store.feelingCompleted);
 
     useEffect(() => {
         dispatch({type: 'SET_ID', payload: pageId})
@@ -21,11 +22,21 @@ const Feeling = () => {
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
+
         dispatch({type: 'SET_FEELING', payload: feeling}),
-        setUpdateButton(true);
-        history.push('/understanding');
+        dispatch({type: 'SET_FEELING_COMPLETED', payload: true})
+        
+        if (pageCompleted) {
+            return (
+                history.push('/review') 
+            )
         }
+        return (
+            setUpdateButton(true), 
+            history.push('/understanding') 
+        )
+    }
 
     //function to update feedback and return to review page
     const updateFeedback = (e) => {
@@ -37,7 +48,7 @@ const Feeling = () => {
     return(
         <div className="feelingOuterDiv">
             <div className="feelingInnerDiv">
-                <form onSubmit={!updateButton ? handleSubmit : updateFeedback}>
+                <form onSubmit={updateButton ? updateFeedback : handleSubmit}>
                     <label className="feelingLabel">
                         <h2 className="feelingHeader">How are you feeling today?</h2>
                         <i>
