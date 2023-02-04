@@ -35,6 +35,44 @@ const comments = (state = '', action) => {
     return state;
 }
 
+// variable to keep track of which page is being viewed - part of stretch goal 1
+const pageId = (state = 0, action) => {
+    if (action.type === 'SET_ID') {
+        return action.payload;
+    }
+    return state;
+}
+
+//keep track of if a page has been submitted
+const feelingCompleted = (state = false, action) => {
+    if (action.type === 'SET_FEELING_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const understandingCompleted = (state = false, action) => {
+    if (action.type === 'SET_UNDERSTANDING_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const supportCompleted = (state = false, action) => {
+    if (action.type === 'SET_SUPPORT_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+const commentsCompleted = (state = false, action) => {
+    if (action.type === 'SET_COMMENTS_COMPLETED') {
+        return action.payload;
+    }
+    return state;
+}
+
+//POST request to add feedback
 const postFeedback = (state = {}, action) => {
     if (action.type === 'POST_FEEDBACK') {
         console.log('made post request with: ', action.payload);
@@ -42,6 +80,16 @@ const postFeedback = (state = {}, action) => {
     }
     return state;
 }
+//PUT request to change feedback
+// action.payload needs the following:
+//    - req.params.type, req.params.feedback, req.params.id
+// const changeFeedback = (state = {}, action) => {
+//     const id = action.payload.id;
+//     if (action.type === 'CHANGE_FEEDBACK') {
+//         console.log('made put request for id: ', id);
+//         axios.put(`/feedback/${id}`, action.payload)
+//     }
+// }
 
 const reduxStore = createStore(
     combineReducers({
@@ -49,7 +97,12 @@ const reduxStore = createStore(
         understanding,
         support,
         comments,
-        postFeedback
+        postFeedback,
+        pageId,
+        feelingCompleted,
+        understandingCompleted,
+        supportCompleted,
+        commentsCompleted
     })
 );
 

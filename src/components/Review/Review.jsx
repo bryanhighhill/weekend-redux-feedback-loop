@@ -1,11 +1,13 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import { useEffect } from 'react';
 
 const Review = () => {
     const feeling = useSelector(store => store.feeling);
     const understanding = useSelector(store => store.understanding);
     const support = useSelector(store => store.support);
     const comments = useSelector(store => store.comments);
+    const changeFeedback = useSelector(store => store.changeFeedback);
     const dispatch = useDispatch();
     const history = useHistory();
 
@@ -28,17 +30,20 @@ const onClickHandler = () => {
             <div className="reviewInnerDiv">
                 <h2> Please review your feedback</h2>
                 <br />
+                <p><b>if you'd like to make changes to your feedback, click the page name in the progress bar</b></p>
+                <br />
+                <br />
                 Feeling: {feeling}
                 <br />
                 Understanding: {understanding}
                 <br />
                 Support: {support}
                 <br />
-                <br />
                 <div className="comments">
                     Comments: 
                     <br />
                     {comments}
+                    <br />
                 </div>
             </div>
             <br />

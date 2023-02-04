@@ -1,12 +1,19 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Feeling = () => {
-    const [feeling, setFeeling] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
+    const [feeling, setFeeling] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
+    const [updateButton, setUpdateButton] = useState(false);
+    const pageId = 1;
+    const pageCompleted = useSelector(store => store.feelingCompleted);
+
+    useEffect(() => {
+        dispatch({type: 'SET_ID', payload: pageId})
+    })
 
     const changeHandler = (value) => {
         setFeeling(value);
@@ -15,15 +22,33 @@ const Feeling = () => {
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
-        e.preventDefault();
+        e.preventDefault(); 
+
         dispatch({type: 'SET_FEELING', payload: feeling}),
-        history.push('/understanding')
+        dispatch({type: 'SET_FEELING_COMPLETED', payload: true})
+        
+        if (pageCompleted) {
+            return (
+                history.push('/review') 
+            )
         }
+        return (
+            setUpdateButton(true), 
+            history.push('/understanding') 
+        )
+    }
+
+    //function to update feedback and return to review page
+    const updateFeedback = (e) => {
+        e.preventDefault();
+        dispatch({type: 'UPDATE_FEEDBACK', payload: feeling}),
+        history.push('/review');
+    }
 
     return(
         <div className="feelingOuterDiv">
             <div className="feelingInnerDiv">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={updateButton ? updateFeedback : handleSubmit}>
                     <label className="feelingLabel">
                         <h2 className="feelingHeader">How are you feeling today?</h2>
                         <i>
@@ -52,14 +77,14 @@ const Feeling = () => {
                         </select>
                     </label>
                     <br />
-                    <br />
-                    <button
-                        disabled={buttonDisable} 
-                        type="submit"
-                        className="nextButton"
-                    >
-                        Next
-                    </button>
+                    <br /> 
+                        <button
+                            disabled={buttonDisable} 
+                            type="submit"
+                            className="nextButton"
+                        >
+                            {!updateButton ? "Next" : "Update"}
+                        </button>
                 </form>
             </div>
         </div>

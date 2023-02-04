@@ -1,17 +1,30 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 const Support = () => {
     const [support, setSupport] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
     const [buttonDisable, setButtonDisable] = useState(true);
+    const pageId = 3;
+    const pageCompleted = useSelector(store => store.supportCompleted);
+
+    useEffect(() => {
+        dispatch({type: 'SET_ID', payload: pageId})
+    })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
         dispatch({type: 'SET_SUPPORT', payload: support});
+        dispatch({type: 'SET_SUPPORT_COMPLETED', payload: true})
+        
+        if (pageCompleted) {
+            return (
+                history.push('/review') 
+            )
+        }
         history.push('/comments');
     }
 
