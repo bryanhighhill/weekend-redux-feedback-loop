@@ -39,14 +39,23 @@ onClick of the Submit button, the newFeedback object is dispatched as payload ba
 
 After the POST request is made, the user is brought to a page that thanks them for their feedback and includes a button that allows them to return to the homepage and provide more feedback.
 
-# Duration: 
-    - started assignment: 
-        10:25am February 3, 2023
-    - finished base goals:
-        4:29pm February 3, 2023 
+# Duration:
 
+    [BASE GOALS]
+    (approx. 6 hours for base goals)
+        - started assignment: 
+            10:25am February 3, 2023
+        - finished base goals:
+            4:29pm February 3, 2023 
+
+    [STRETCH GOALS]
     - started stretch goals:
         10:30am February 4, 2023
+    - completed first stretch goal to update scores:
+        3:30pm February 4, 2023
+    (approx. 5 hours for stretch 1)
+
+    
 
 
 # Screen Shot
