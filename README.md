@@ -1,59 +1,84 @@
 # Project Name
-
-[Project Instructions](./INSTRUCTIONS.md), this line may be removed once you have updated the README.md
+WEEKEND-REDUX-FEEDBACK-LOOP
 
 ## Description
+The main objective was to create a feedback app that allows users to rate their current status in the following categories:
+    - how they are feeling (on scale of 0 - 5)
+    - what their current level of understanding the material is (on scale of 0 - 5)
+    - how supported they feel (on scale of 0 - 5)
+Each category is on its own page, then once the feedback has been provided, a button click brings them to the next form.
 
-Your project description goes here. What problem did you solve? How did you solve it?
+I also needed to include a place where the user can provide feedback in the form of text.
 
-Additional README details can be found [here](https://github.com/PrimeAcademy/readme-template/blob/master/README.md).
+Upon completion of the forms, the user is brought to a page where they can review the data that they provided, then submit it.
+
+To accomplish this I created 6 components. 4 of the components each represent one of the feedback categories, a 5th component contains the page to review the feedback provided, and the 6th component confirms that the form was submitted and gives the user an option to provide more feedback by returning to the start of the app.
+
+To start, I created a reduxStore so that I could pass and collect data from the forms. This is located in index.js.
+
+Then I created route paths so that I could define navigation between each of the forms. These route paths are located in app.jsx.
+
+Feeling.jsx is the first form component and is set to display on the "home page". 
+
+## Basic structure of form components
+The components for Feeling, Support, and Understanding are all pretty similar because they are all collecting the same type of data and storing it in the same manner.
+For the basic structure of these components I created variables to set and get the form data (ranking of 0 - 5). Each component is returning a form with a <select> component. The onChange inside <select> is what is setting the variable.
+
+In order to enable the Next button, the user must select a 0 - 5 value. Once they do, the Next button becomes clickable. This is also happening in the onChange function by setting the disabled value of the button to false onChange.
+
+On buttonSubmit, I created a function that is dispatch a payload of the getter variable to the reduxStore, then utilizing useHistory() in order to proceed to the next form.
+
+The 4th component is Comments. Here is where the user can enter comments or feedback as text. The basic structure is the same as outlined above except instead of the <select> component, I utilized <input> so that there was a text field instead of a drop-down.
+Instead of proceeding to another form on handleSubmit, the user is then brought to a page that contains all the data the provided (Review.jsx).
+
+## Review Component
+The review component utilizes useSelector in order to access all the data that was dispatched to store. I created variables for all of the store data.
+Using these variables I displayed the feedback data on the DOM, as well as created an object that contains all the feedback data.
+
+onClick of the Submit button, the newFeedback object is dispatched as payload back to the store, where it is grabbed and put into an axios request. It gets routed to the server side feedback.router.js where a SQL request is made and the data gets posted to the database.
+
+After the POST request is made, the user is brought to a page that thanks them for their feedback and includes a button that allows them to return to the homepage and provide more feedback.
+
+# Duration: 
+    - started assignment: 
+        10:25am February 3, 2023
+    - finished base goals:
+        4:29pm February 3, 2023 
+
+    - started stretch goals:
+        10:30am February 4, 2023
 
 
-Duration: 
-    - start: 10:25am February 3, 2023
-    - finish: 
-
-Your project description goes here. 
-What problem did you solve? 
-How did you solve it?
-
-
-To see the fully functional site, please visit: 
-DEPLOYED VERSION OF APP
-
-Screen Shot
+# Screen Shot
 Include one or two screen shots of your project here (optional). 
 Remove if unused.
 
-Prerequisites
-    - axios
-    - express
-    - pg
-    - react
-    - react-redux
-    - react-router-dom
+# Prerequisites
+- axios
+- express
+- pg
+- react
+- react-redux
+- react-router-dom
 
 
-Installation
-How do you get your application up and running? 
-This is a step by step list for how another developer could get this project up and running. 
-The good target audience in terms of knowledge, would be a fellow Primer from another cohort being able to spin up this project. 
-Note that you do not need a paragraph here to intro Installation. 
-It should be step-by-step.
+# Installation
+npm install
+npm install react-redux
 
-If your application has secret keys (for example -- Twilio), make sure you tell them how to set that up, both in getting the key and then what to call it in the .env file.
+npm run server
 
-Create a database named your database name,
+in new terminal tab:
+npm run client
 
-The queries in the tables.sql file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. 
+# Database
+The project is built on Postgres, so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries.
 
-The project is built on Postgres, so you will need to make sure to have that installed. 
-We recommend using Postico to run those queries as that was used to create the queries,
+- Create your database and title it `prime_feedback`
+- Use the provided `data.sql` file set up your table
 
-Open up your editor of choice and run an npm install
-Run npm run server in your terminal
-Run npm run client in your terminal
-The npm run client command will open up a new browser tab for you!
+The query in the `data.sql` file is set up to create the necessary table and populate the needed data to allow the application to run correctly. 
+
 
 Usage
 How does someone use this application? Tell a user story here.

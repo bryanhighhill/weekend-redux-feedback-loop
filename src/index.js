@@ -35,12 +35,23 @@ const comments = (state = '', action) => {
     return state;
 }
 
+//POST request to add feedback
 const postFeedback = (state = {}, action) => {
     if (action.type === 'POST_FEEDBACK') {
         console.log('made post request with: ', action.payload);
         axios.post('/feedback', action.payload);
     }
     return state;
+}
+//PUT request to change feedback
+// action.payload needs the following:
+//    - req.params.type, req.params.feedback, req.params.id
+const changeFeedback = (state = {}, action) => {
+    const id = action.payload.id;
+    if (action.type === 'CHANGE_FEEDBACK') {
+        console.log('made put request for id: ', id);
+        axios.put(`/feedback/${id}`, action.payload)
+    }
 }
 
 const reduxStore = createStore(
