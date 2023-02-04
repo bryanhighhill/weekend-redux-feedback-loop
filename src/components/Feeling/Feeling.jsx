@@ -1,12 +1,13 @@
-import { useState } from 'react';
+import { useState, useRoute } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 const Feeling = () => {
-    const [feeling, setFeeling] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
+    const [feeling, setFeeling] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
+    const [updateButton, setUpdateButton] = useState(false);
 
     const changeHandler = (value) => {
         setFeeling(value);
@@ -20,10 +21,17 @@ const Feeling = () => {
         history.push('/understanding')
         }
 
+    //function to update feedback and return to review page
+    const updateFeedback = (e) => {
+        e.preventDefault();
+        dispatch({type: 'UPDATE_FEEDBACK', payload: feeling}),
+        history.push('/review')
+    }
+
     return(
         <div className="feelingOuterDiv">
             <div className="feelingInnerDiv">
-                <form onSubmit={handleSubmit}>
+                <form onSubmit={!updateButton ? handleSubmit : updateFeedback}>
                     <label className="feelingLabel">
                         <h2 className="feelingHeader">How are you feeling today?</h2>
                         <i>
@@ -52,14 +60,14 @@ const Feeling = () => {
                         </select>
                     </label>
                     <br />
-                    <br />
-                    <button
-                        disabled={buttonDisable} 
-                        type="submit"
-                        className="nextButton"
-                    >
-                        Next
-                    </button>
+                    <br /> 
+                        <button
+                            disabled={buttonDisable} 
+                            type="submit"
+                            className="nextButton"
+                        >
+                            {!updateButton ? "Next" : "Update"}
+                        </button>
                 </form>
             </div>
         </div>

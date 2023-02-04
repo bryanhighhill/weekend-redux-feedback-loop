@@ -23,17 +23,17 @@ router.post('/', (req, res) => {
 });
 
 // PUT feedback
-router.put('/:id', (req, res) => {
-    console.log('req.params in PUT: ', req.params);
-    let queryText = `UPDATE "feedback" SET "$1" = "$2" WHERE "id" = $3;`;
-    pool.query(queryText, [req.params.type, req.params.feedback, req.params.id])
-    .then(() => {
-        res.sendStatus(200);
-    })
-    .catch((error) => {
-        console.log('error with PUT request to db: ', error);
-        res.sendStatus(500);
-    })
-});
+// router.put('/:id', (req, res) => {
+//     console.log('req.params in PUT: ', req.params);
+//     let queryText = `UPDATE "feedback" SET "$1" = "$2" WHERE "id" = $3;`;
+//     pool.query(queryText, [req.params.type, req.params.feedback, req.params.id])
+//     .then(() => {
+//         res.sendStatus(200);
+//     })
+//     .catch((error) => {
+//         console.log('error with PUT request to db: ', error);
+//         res.sendStatus(500);
+//     })
+// });
 
 module.exports = router;

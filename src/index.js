@@ -46,13 +46,13 @@ const postFeedback = (state = {}, action) => {
 //PUT request to change feedback
 // action.payload needs the following:
 //    - req.params.type, req.params.feedback, req.params.id
-const changeFeedback = (state = {}, action) => {
-    const id = action.payload.id;
-    if (action.type === 'CHANGE_FEEDBACK') {
-        console.log('made put request for id: ', id);
-        axios.put(`/feedback/${id}`, action.payload)
-    }
-}
+// const changeFeedback = (state = {}, action) => {
+//     const id = action.payload.id;
+//     if (action.type === 'CHANGE_FEEDBACK') {
+//         console.log('made put request for id: ', id);
+//         axios.put(`/feedback/${id}`, action.payload)
+//     }
+// }
 
 const reduxStore = createStore(
     combineReducers({
@@ -60,7 +60,8 @@ const reduxStore = createStore(
         understanding,
         support,
         comments,
-        postFeedback
+        postFeedback,
+        // changeFeedback
     })
 );
 
