@@ -1,5 +1,8 @@
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import './SuccessPage.css';
 
 const SuccessPage = () => {
     const dispatch = useDispatch();
@@ -22,11 +25,16 @@ const SuccessPage = () => {
     return (
         <div>
             <h2>Thank you for your feedback!</h2>
-            <button 
-                className="newFeedbackForm"
-                onClick={resetFeedback}>
-                Leave new feedback
-            </button>
+            <div className="success-button">
+                <Stack>
+                    <Button 
+                        variant="outlined"
+                        className="newFeedbackForm"
+                        onClick={resetFeedback}>
+                        Leave new feedback
+                    </Button>
+                </Stack>
+            </div>
         </div>
     )
 }

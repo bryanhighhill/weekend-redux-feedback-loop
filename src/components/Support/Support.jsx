@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import './Support.css';
+import '../styles.css';
 
 const Support = () => {
     const [support, setSupport] = useState(0);
@@ -34,24 +34,28 @@ const Support = () => {
     }
 
     return(
-        <div className="supportOuterDiv">
-            <div className="supportInnerDiv">
+        <div className="outer-div">
+            <br />
+            <br />
+            <div className="inner-div">
                 <form onSubmit={handleSubmit}>
                     <label className="supportLabel">
-                        <h2>How well do you feel supported?</h2>
-                        <i>
-                            please select an option 0 through 5 
+                        <div className="header">
+                            <h2>How well do you feel supported?</h2>
+                            <i>
+                                please select an option 0 through 5 
+                                <br />
+                                (0 being not supported and 5 being totally supported)
+                            </i>
                             <br />
-                            (0 being not supported and 5 being totally supported)
                             <br />
-                            then click "Next"
-                        </i>
+                        </div>
                         <br />
                         <br />
                         <select 
                             name="support" 
                             defaultValue="default"
-                            className="supportList"
+                            className="list"
                             onChange={(e) => changeHandler(e.target.value)}
                         >
                             <option value="default" disabled={true}>
@@ -67,7 +71,7 @@ const Support = () => {
                     </label>
                     <br />
                     <br />
-                    <div className="support-button">
+                    <div className="button">
                         <Stack>
                             <Button
                                 variant="outlined"

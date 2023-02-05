@@ -1,6 +1,8 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
-import { useEffect } from 'react';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import '../styles.css';
 
 const Review = () => {
     const feeling = useSelector(store => store.feeling);
@@ -26,28 +28,40 @@ const onClickHandler = () => {
 }
 
     return (
-        <div className="reviewOuterDiv">
-            <div className="reviewInnerDiv">
-                <h2> Please review your feedback</h2>
-                <br />
-                <p><b>if you'd like to make changes to your feedback, click the page name in the progress bar</b></p>
+        <div className="outer-div">
                 <br />
                 <br />
-                Feeling: {feeling}
+            <div className="inner-div">
+                <div className="header">
+                    <h2> Please review your feedback</h2>
+                    <h5><i>if you'd like to make changes to your feedback, please click the section name above</i></h5>
                 <br />
-                Understanding: {understanding}
                 <br />
-                Support: {support}
-                <br />
-                <div className="comments">
-                    Comments: 
+                <div className="feedback-results">
+                    <b>Feeling:</b> {feeling}
                     <br />
-                    {comments}
+                    <br />
+                    <b>Understanding:</b> {understanding}
+                    <br />
+                    <br />
+                    <b>Support:</b> {support}
+                    <br />
+                    <br />
+                    <div className="comments">
+                    <b>Comments:</b> 
+                        <br />
+                        {comments}
+                </div>
+            </div>
                     <br />
                 </div>
             </div>
             <br />
-            <button className="submitButton" onClick={onClickHandler}>SUBMIT</button>
+            <div className="button">
+                <Stack>
+                    <Button variant="outlined" className="submitButton" onClick={onClickHandler}>SUBMIT</Button>
+                </Stack>
+            </div>
         </div>
 
     )

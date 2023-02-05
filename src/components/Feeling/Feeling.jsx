@@ -3,7 +3,7 @@ import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
-import './Feeling.css';
+import '../styles.css';
 
 const Feeling = () => {
     const history = useHistory();
@@ -37,23 +37,29 @@ const Feeling = () => {
     }
 
     return(
-        <div className="feelingOuterDiv">
-            <div className="feelingInnerDiv">
+        <div className="outer-div">
+            <br />
+            <br />
+            <div className="inner-div">
                 <form onSubmit={handleSubmit}>
-                    <label className="feelingLabel">
-                        <h2 className="feelingHeader">How are you feeling today?</h2>
+                <label className="Label">
+                    <div className="header">
+                        <h2>How are you feeling today?</h2>
                         <i>
                             please select an option 0 through 5
                             <br />
                             (0 being awful and 5 being incredible)
-                            <br />then click "Next"
                         </i>
                         <br />
                         <br />
+                    </div>
+                    <br />
+                    <br />
+                    <div className="feeling-select-div">
                         <select 
                             name="feeling" 
                             defaultValue="default"
-                            className="feelingList"
+                            className="list"
                             onChange={(e) => changeHandler(e.target.value)}
                         >
                             <option value="default" disabled={true}>
@@ -66,24 +72,25 @@ const Feeling = () => {
                             <option value="4">4</option>
                             <option value="5">5</option>
                         </select>
-                    </label>
-                    <br />
-                    <br /> 
-                    <div className="feeling-button">
-                        <Stack direction ="row">
-                            <Button 
-                                variant="outlined"
-                                disabled={buttonDisable} 
-                                type="submit"
-                                className="nextButton"
-                            >
-                                {!pageCompleted ? 'Next' : 'Update'}
-                            </Button>
-                        </Stack>
                     </div>
-                </form>
-            </div>
+                </label>
+                <br />
+                <br /> 
+                <div className="button">
+                    <Stack>
+                        <Button 
+                            variant="outlined"
+                            disabled={buttonDisable} 
+                            type="submit"
+                            className="nextButton"
+                        >
+                            {!pageCompleted ? 'Next' : 'Update'}
+                        </Button>
+                    </Stack>
+                </div>
+            </form>
         </div>
+    </div>
     )
 }
 
