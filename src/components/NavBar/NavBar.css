@@ -1,0 +1,12 @@
+.status-bar {
+    display: flex;
+    justify-content: center;
+}
+
+.feeling-nav {
+    color: red
+} 
+
+.feeling-nav-complete {
+    color: green;
+}
