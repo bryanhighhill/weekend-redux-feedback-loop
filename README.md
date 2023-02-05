@@ -96,14 +96,3 @@ The query in the `data.sql` file is set up to create the necessary table and pop
 
 ## Built With
 React, React-Redux, React-Router-Dom, SQL, axios, javaScript, html, css, nodejs, express
-
-License
-MIT
-
-Note, include this only if you have a license file. GitHub will generate one for you if you want!
-
-Acknowledgement
-Thanks to Prime Digital Academy who equipped and helped me to make this application a reality. (Thank your people)
-
-Support
-If you have suggestions or issues, please email me at youremail@whatever.com
