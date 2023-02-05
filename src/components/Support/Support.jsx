@@ -1,25 +1,25 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import './Support.css';
 
 const Support = () => {
     const [support, setSupport] = useState(0);
     const history = useHistory();
     const dispatch = useDispatch();
     const [buttonDisable, setButtonDisable] = useState(true);
-    // const pageId = 3;
     const pageCompleted = useSelector(store => store.supportCompleted);
-
-    // useEffect(() => {
-    //     dispatch({type: 'SET_ID', payload: pageId})
-    // })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
+        //save feedback to store
         dispatch({type: 'SET_SUPPORT', payload: support});
+        //save page completion status to store
         dispatch({type: 'SET_SUPPORT_COMPLETED', payload: true})
-        
+        //forward navigation goes here - conditional to check if page update or first time filling out
         if (pageCompleted) {
             return (
                 history.push('/review') 
@@ -27,7 +27,7 @@ const Support = () => {
         }
         history.push('/comments');
     }
-
+    //set values from form
     const changeHandler = (value) => {
         setSupport(value);
         setButtonDisable(false);
@@ -67,13 +67,18 @@ const Support = () => {
                     </label>
                     <br />
                     <br />
-                    <button
-                        disabled={buttonDisable} 
-                        type="submit"
-                        className="nextButton"
-                    >
-                        {!pageCompleted ? 'Next' : 'Update'}
-                    </button>
+                    <div className="support-button">
+                        <Stack>
+                            <Button
+                                variant="outlined"
+                                disabled={buttonDisable} 
+                                type="submit"
+                                className="nextButton"
+                            >
+                                {!pageCompleted ? 'Next' : 'Update'}
+                            </Button>
+                        </Stack>
+                    </div>
                 </form>
             </div>
         </div>

@@ -1,24 +1,24 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import './Comments.css';
 
 const Comments = () => {
     const [comments, setComments] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
-    // const pageId = 4;
     const pageCompleted = useSelector(store => store.commentsCompleted);
-
-    // useEffect(() => {
-    //     dispatch({type: 'SET_ID', payload: pageId})
-    // })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault();
+        //save comments to store
         dispatch({type: 'SET_COMMENTS', payload: comments});
+        //save page completion status to store
         dispatch({type: 'SET_COMMENTS_COMPLETED', payload: true})
-        
+        //forward navigation goes here - conditional to check if page update or first time filling out
         if (pageCompleted) {
             return (
                 history.push('/review') 
@@ -42,12 +42,17 @@ const Comments = () => {
                         >
                         </input>
                     </label>
-                    <button 
-                        type="submit"
-                        className="nextButton"
-                    >
-                        {!pageCompleted ? 'Next' : 'Update'}
-                    </button>
+                    <div className="comments-button">
+                        <Stack>
+                            <Button
+                                variant="outlined" 
+                                type="submit"
+                                className="nextButton"
+                            >
+                                {!pageCompleted ? 'Next' : 'Update'}
+                            </Button>
+                        </Stack>
+                    </div>
                 </form>
             </div>
         </div>

@@ -24,7 +24,6 @@ const NavBar = () => {
     
     return (
         <>
-            <h2>STATUS BAR</h2>
             <div className="status-bar">
                 <Stack className="material-ui-buttons" direction="row" spacing={5}>
                     <Button disabled={navDisabled} className={navDisabled ? "feeling-nav" : "feeling-nav-complete"} onClick={() => history.push('/')}>Feeling (1/4)</Button>

@@ -1,19 +1,18 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
+import Stack from '@mui/material/Stack';
+import Button from '@mui/material/Button';
+import './Feeling.css';
 
 const Feeling = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [feeling, setFeeling] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
-    // const pageId = 1;
     const pageCompleted = useSelector(store => store.feelingCompleted);
 
-    // useEffect(() => {
-    //     dispatch({type: 'SET_ID', payload: pageId})
-    // })
-
+    //set values from form
     const changeHandler = (value) => {
         setFeeling(value);
         setButtonDisable(false);
@@ -22,10 +21,11 @@ const Feeling = () => {
     //function called when Next button is pressed
     const handleSubmit = (e) => {
         e.preventDefault(); 
-
+        //save feedback to store
         dispatch({type: 'SET_FEELING', payload: feeling}),
+        //save page completion status to store
         dispatch({type: 'SET_FEELING_COMPLETED', payload: true})
-        
+        //forward navigation goes here - conditional to check if page update or first time filling out
         if (pageCompleted) {
             return (
                 history.push('/review') 
@@ -36,17 +36,10 @@ const Feeling = () => {
         )
     }
 
-    //function to update feedback and return to review page
-    const updateFeedback = (e) => {
-        e.preventDefault();
-        dispatch({type: 'UPDATE_FEEDBACK', payload: feeling}),
-        history.push('/review');
-    }
-
     return(
         <div className="feelingOuterDiv">
             <div className="feelingInnerDiv">
-                <form onSubmit={pageCompleted ? updateFeedback : handleSubmit}>
+                <form onSubmit={handleSubmit}>
                     <label className="feelingLabel">
                         <h2 className="feelingHeader">How are you feeling today?</h2>
                         <i>
@@ -76,13 +69,18 @@ const Feeling = () => {
                     </label>
                     <br />
                     <br /> 
-                        <button
-                            disabled={buttonDisable} 
-                            type="submit"
-                            className="nextButton"
-                        >
-                            {!pageCompleted ? 'Next' : 'Update'}
-                        </button>
+                    <div className="feeling-button">
+                        <Stack direction ="row">
+                            <Button 
+                                variant="outlined"
+                                disabled={buttonDisable} 
+                                type="submit"
+                                className="nextButton"
+                            >
+                                {!pageCompleted ? 'Next' : 'Update'}
+                            </Button>
+                        </Stack>
+                    </div>
                 </form>
             </div>
         </div>

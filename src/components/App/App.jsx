@@ -1,6 +1,5 @@
 import React from 'react';
-import axios from 'axios';
-import { HashRouter as Router, Route, useRoute, Link, useHistory } from 'react-router-dom';
+import { HashRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import Feeling from '../Feeling/Feeling'
 import Understanding from '../Understanding/Understanding';
@@ -20,6 +19,7 @@ function App() {
           <h4>Don't forget it!</h4>
         </header>
         
+        {/* Add Navigation/Progress Bar Here */}
         <div class="progress-bar-div"> <NavBar /></div>
 
         {/* define route paths here */}
