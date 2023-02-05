@@ -80,16 +80,6 @@ const postFeedback = (state = {}, action) => {
     }
     return state;
 }
-//PUT request to change feedback
-// action.payload needs the following:
-//    - req.params.type, req.params.feedback, req.params.id
-// const changeFeedback = (state = {}, action) => {
-//     const id = action.payload.id;
-//     if (action.type === 'CHANGE_FEEDBACK') {
-//         console.log('made put request for id: ', id);
-//         axios.put(`/feedback/${id}`, action.payload)
-//     }
-// }
 
 const reduxStore = createStore(
     combineReducers({

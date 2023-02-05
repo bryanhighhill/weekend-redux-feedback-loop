@@ -61,31 +61,29 @@ If a user goes back to edit feedback on a specific page, the button text becomes
     - completed first stretch goal to update scores:
         3:30pm February 4, 2023
     
-
-
-
-
-# Screen Shot
-Include one or two screen shots of your project here (optional). 
-Remove if unused.
+    (approx. 2 1/2 hrs for stretch 2)
+    - started stretch goal 2:
+        8:45am February 5, 2023
+    - stopped (plenty more I could do with styling!)
+        11:!5am February 5, 2023
 
 # Prerequisites
-- axios
-- express
-- pg
-- react
-- react-redux
-- react-router-dom
+    - axios
+    - express
+    - pg
+    - react
+    - react-redux
+    - react-router-dom
 
 
 # Installation
-npm install
-npm install react-redux
+    npm install
+    npm install react-redux
 
-npm run server
+    npm run server
 
-in new terminal tab:
-npm run client
+    in new terminal tab:
+    npm run client
 
 # Database
 The project is built on Postgres, so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries.
@@ -96,18 +94,8 @@ The project is built on Postgres, so you will need to make sure to have that ins
 The query in the `data.sql` file is set up to create the necessary table and populate the needed data to allow the application to run correctly. 
 
 
-Usage
-How does someone use this application? Tell a user story here.
-
-xxx
-xxx
-xxx
-xxx
-xxx
-xxx
-
-Built With
-List technologies and frameworks here
+## Built With
+React, React-Redux, React-Router-Dom, SQL, axios, javaScript, html, css, nodejs, express
 
 License
 MIT
