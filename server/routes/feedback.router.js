@@ -22,4 +22,16 @@ router.post('/', (req, res) => {
         });
 });
 
+// GET feedback
+router.get('/', (req, res) => {
+    let queryText = 'SELECT * from "feedback" ORDER BY "id" desc;';
+    pool.query(queryText).then(result => {
+        res.send(result.rows);
+    })
+    .catch(error => {
+        console.log('error with getting feedback: ', error);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;

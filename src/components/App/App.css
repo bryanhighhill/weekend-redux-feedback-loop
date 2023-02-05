@@ -21,3 +21,8 @@
 h4 {
   font-style: italic;
 }
+
+.admin {
+  display: flex;
+  justify-content: center;
+}

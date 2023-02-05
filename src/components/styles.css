@@ -37,3 +37,19 @@ body {
     border-radius: 20px;
     padding: 10px; 
 }
+
+.feedback-list {
+    display: grid;
+    grid-template-columns: repeat(4, 1ft);
+    padding: 10px;
+    justify-items: center;
+    grid-gap: 20px;
+}
+
+.feedback-div {
+    border: dashed;
+    background-color: rgb(249, 246, 243);
+    padding: 10px;
+    border-radius: 20px;
+}
+
