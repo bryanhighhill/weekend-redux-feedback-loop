@@ -39,6 +39,12 @@ onClick of the Submit button, the newFeedback object is dispatched as payload ba
 
 After the POST request is made, the user is brought to a page that thanks them for their feedback and includes a button that allows them to return to the homepage and provide more feedback.
 
+## Stretch Goal #1 - Allow user to update/edit their feedback
+To accomplish this goal, I created a new component called "StatusBar" which is displayed at the top of each page.
+It tracks the progress of where the user is at and after a page has been "completed" it dispatches that status to store.
+Navigation becomes clickable once the user reaches the review page and all forms have been completed. They can then click on the section they want to go back and update, using the status bar.
+If a user goes back to edit feedback on a specific page, the button text becomes "update" instead of "next", and when it is clicked, it goes back to the review page instead of the next form page.
+
 # Duration:
 
     [BASE GOALS]
@@ -49,13 +55,14 @@ After the POST request is made, the user is brought to a page that thanks them f
             4:29pm February 3, 2023 
 
     [STRETCH GOALS]
-    - started stretch goals:
+    (approx. 5 hours for stretch 1)
+    - started stretch goal 1:
         10:30am February 4, 2023
     - completed first stretch goal to update scores:
         3:30pm February 4, 2023
-    (approx. 5 hours for stretch 1)
-
     
+
+
 
 
 # Screen Shot

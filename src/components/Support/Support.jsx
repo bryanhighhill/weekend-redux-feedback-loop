@@ -7,12 +7,12 @@ const Support = () => {
     const history = useHistory();
     const dispatch = useDispatch();
     const [buttonDisable, setButtonDisable] = useState(true);
-    const pageId = 3;
+    // const pageId = 3;
     const pageCompleted = useSelector(store => store.supportCompleted);
 
-    useEffect(() => {
-        dispatch({type: 'SET_ID', payload: pageId})
-    })
+    // useEffect(() => {
+    //     dispatch({type: 'SET_ID', payload: pageId})
+    // })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
@@ -72,7 +72,7 @@ const Support = () => {
                         type="submit"
                         className="nextButton"
                     >
-                        Next
+                        {!pageCompleted ? 'Next' : 'Update'}
                     </button>
                 </form>
             </div>

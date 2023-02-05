@@ -7,13 +7,12 @@ const Feeling = () => {
     const dispatch = useDispatch();
     const [feeling, setFeeling] = useState(0);
     const [buttonDisable, setButtonDisable] = useState(true);
-    const [updateButton, setUpdateButton] = useState(false);
-    const pageId = 1;
+    // const pageId = 1;
     const pageCompleted = useSelector(store => store.feelingCompleted);
 
-    useEffect(() => {
-        dispatch({type: 'SET_ID', payload: pageId})
-    })
+    // useEffect(() => {
+    //     dispatch({type: 'SET_ID', payload: pageId})
+    // })
 
     const changeHandler = (value) => {
         setFeeling(value);
@@ -33,7 +32,6 @@ const Feeling = () => {
             )
         }
         return (
-            setUpdateButton(true), 
             history.push('/understanding') 
         )
     }
@@ -48,7 +46,7 @@ const Feeling = () => {
     return(
         <div className="feelingOuterDiv">
             <div className="feelingInnerDiv">
-                <form onSubmit={updateButton ? updateFeedback : handleSubmit}>
+                <form onSubmit={pageCompleted ? updateFeedback : handleSubmit}>
                     <label className="feelingLabel">
                         <h2 className="feelingHeader">How are you feeling today?</h2>
                         <i>
@@ -83,7 +81,7 @@ const Feeling = () => {
                             type="submit"
                             className="nextButton"
                         >
-                            {!updateButton ? "Next" : "Update"}
+                            {!pageCompleted ? 'Next' : 'Update'}
                         </button>
                 </form>
             </div>

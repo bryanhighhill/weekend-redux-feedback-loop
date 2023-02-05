@@ -11,6 +11,10 @@ const SuccessPage = () => {
             dispatch({type: 'SET_SUPPORT', payload: 0}),
             dispatch({type: 'SET_UNDERSTANDING', payload: 0}),
             dispatch({type: 'SET_FEELING', payload: 0}),
+            dispatch({type: 'SET_FEELING_COMPLETED', payload: false}),
+            dispatch({type: 'SET_UNDERSTANDING_COMPLETED', payload: false}),
+            dispatch({type: 'SET_SUPPORT_COMPLETED', payload: false}),
+            dispatch({type: 'SET_COMMENTS_COMPLETED', payload: false}),
             history.push('/')
         )
     }

@@ -6,12 +6,12 @@ const Comments = () => {
     const [comments, setComments] = useState('');
     const history = useHistory();
     const dispatch = useDispatch();
-    const pageId = 4;
+    // const pageId = 4;
     const pageCompleted = useSelector(store => store.commentsCompleted);
 
-    useEffect(() => {
-        dispatch({type: 'SET_ID', payload: pageId})
-    })
+    // useEffect(() => {
+    //     dispatch({type: 'SET_ID', payload: pageId})
+    // })
 
     //function called when Next button is pressed
     const handleSubmit = (e) => {
@@ -46,7 +46,7 @@ const Comments = () => {
                         type="submit"
                         className="nextButton"
                     >
-                        Next
+                        {!pageCompleted ? 'Next' : 'Update'}
                     </button>
                 </form>
             </div>
