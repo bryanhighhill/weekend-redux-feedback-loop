@@ -1,5 +1,5 @@
 import React from 'react';
-import { HashRouter as Router, Route } from 'react-router-dom';
+import { HashRouter as Router, Route, Link } from 'react-router-dom';
 import './App.css';
 import Feeling from '../Feeling/Feeling'
 import Understanding from '../Understanding/Understanding';
@@ -8,6 +8,7 @@ import Comments from '../Comments/Comments';
 import Review from '../Review/Review';
 import SuccessPage from '../SuccessPage/SuccessPage';
 import NavBar from '../NavBar/NavBar';
+import Admin from '../Admin/Admin';
 
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
         </header>
         
         {/* Add Navigation/Progress Bar Here */}
-        <div class="progress-bar-div"> <NavBar /></div>
+        <div className="progress-bar-div"> <NavBar /></div>
 
         {/* define route paths here */}
         <Route path="/" exact>
@@ -41,8 +42,13 @@ function App() {
         <Route path="/success" exact>
           <SuccessPage />
         </Route>
-
+        <Route path="/admin" exact>
+          <Admin />
+        </Route>
       </div>
+      <br />
+      <br />
+      <div className="admin"><Link to="/admin">Admin</Link></div>
     </Router>
   );
 }
