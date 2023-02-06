@@ -5,6 +5,7 @@ import App from './components/App/App';
 import registerServiceWorker from './registerServiceWorker';
 import { createStore, combineReducers, applyMiddleware } from 'redux';
 import { Provider } from 'react-redux';
+import { useState } from 'react';
 import axios from 'axios';
 
 const feeling = (state = 0, action) => {
@@ -35,15 +36,7 @@ const comments = (state = '', action) => {
     return state;
 }
 
-// variable to keep track of which page is being viewed - part of stretch goal 1
-const pageId = (state = 0, action) => {
-    if (action.type === 'SET_ID') {
-        return action.payload;
-    }
-    return state;
-}
-
-//keep track of if a page has been submitted
+//keep track of if a page has been "submitted"
 const feelingCompleted = (state = false, action) => {
     if (action.type === 'SET_FEELING_COMPLETED') {
         return action.payload;
@@ -72,14 +65,13 @@ const commentsCompleted = (state = false, action) => {
     return state;
 }
 
-//POST request to add feedback
-const postFeedback = (state = {}, action) => {
-    if (action.type === 'POST_FEEDBACK') {
-        console.log('made post request with: ', action.payload);
-        axios.post('/feedback', action.payload);
+//SET feedbackList with GET data
+const feedbackList = (state = [], action) => {
+    if (action.type === 'SET_FEEDBACK_LIST') {
+        return action.payload;
     }
     return state;
-}
+};
 
 const reduxStore = createStore(
     combineReducers({
@@ -87,12 +79,11 @@ const reduxStore = createStore(
         understanding,
         support,
         comments,
-        postFeedback,
-        pageId,
         feelingCompleted,
         understandingCompleted,
         supportCompleted,
-        commentsCompleted
+        commentsCompleted,
+        feedbackList
     })
 );
 

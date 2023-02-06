@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
+import axios from 'axios';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
 import '../styles.css';
 
-const Review = () => {
+const Review = ({fetchFeedback}) => {
     const feeling = useSelector(store => store.feeling);
     const understanding = useSelector(store => store.understanding);
     const support = useSelector(store => store.support);
@@ -22,11 +23,16 @@ const newFeedback = {
 
 const onClickHandler = () => {
     return (
-        dispatch({type: 'POST_FEEDBACK', payload: newFeedback}),
-        history.push('/success')
-    )
+        axios.post('/feedback', newFeedback). then(()=> {
+            fetchFeedback();
+            history.push('/success')
+        })
+        .catch(error => {
+            console.log('error with posting feedback: ', error)
+        })
+    );
 }
-
+       
     return (
         <div className="outer-div">
                 <br />

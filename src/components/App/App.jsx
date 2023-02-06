@@ -1,5 +1,8 @@
 import React from 'react';
-import { HashRouter as Router, Route, Link } from 'react-router-dom';
+import axios from 'axios';
+import { useEffect } from 'react';
+import { HashRouter as Router, Route } from 'react-router-dom';
+import { useDispatch, useSelector } from 'react-redux';
 import './App.css';
 import Feeling from '../Feeling/Feeling'
 import Understanding from '../Understanding/Understanding';
@@ -11,6 +14,19 @@ import NavBar from '../NavBar/NavBar';
 import Admin from '../Admin/Admin';
 
 function App() {
+  const dispatch = useDispatch();
+
+   //GET request to feedback
+   const fetchFeedback = (state = {}, action) => {
+      axios.get('/feedback')
+      .then(response => {
+          console.log('response from fetchFeedback: ', response.data);
+          dispatch({type: 'SET_FEEDBACK_LIST', payload: response.data});
+      })
+      .catch(error => {
+        console.log('error with fetchFeedback: ', error);
+      });
+    }
 
   return (
     <Router>
@@ -37,18 +53,17 @@ function App() {
           <Comments />
         </Route>
         <Route path="/review" exact>
-          <Review />
+          <Review fetchFeedback={fetchFeedback}/>
         </Route>
         <Route path="/success" exact>
           <SuccessPage />
         </Route>
         <Route path="/admin" exact>
-          <Admin />
+          <Admin fetchFeedback={fetchFeedback}/>
         </Route>
       </div>
       <br />
       <br />
-      <div className="admin"><Link to="/admin">Admin</Link></div>
     </Router>
   );
 }

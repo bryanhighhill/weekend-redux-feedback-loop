@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import Stack from '@mui/material/Stack';
 import Button from '@mui/material/Button';
@@ -38,6 +38,7 @@ const Feeling = () => {
 
     return(
         <div className="outer-div">
+            <div className="admin"><Link to="/admin">Admin</Link></div>
             <br />
             <br />
             <div className="inner-div">

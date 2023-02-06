@@ -40,16 +40,21 @@ body {
 
 .feedback-list {
     display: grid;
-    grid-template-columns: repeat(4, 1ft);
+    grid-template-columns: repeat(4, 1fr);
     padding: 10px;
-    justify-items: center;
     grid-gap: 20px;
 }
 
 .feedback-div {
-    border: dashed;
+    /* border: dashed; */
     background-color: rgb(249, 246, 243);
     padding: 10px;
     border-radius: 20px;
+    box-shadow: 0 0 3px #232222;
+}
+
+.admin {
+    position: absolute;
+    left: 100px;
 }
 

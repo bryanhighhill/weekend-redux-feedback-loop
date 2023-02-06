@@ -9,9 +9,7 @@ router.post('/', (req, res) => {
     const understanding = req.body.understanding;
     const support = req.body.support;
     const comments = req.body.comments;
-
     const sqlText = `INSERT INTO "feedback" ("feeling", "understanding", "support", "comments") VALUES ($1, $2, $3, $4)`;
-
     pool.query(sqlText, [feeling, understanding, support, comments])
         .then((result) => {
             res.send(result);
