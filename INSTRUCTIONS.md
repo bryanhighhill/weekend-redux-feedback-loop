@@ -81,7 +81,7 @@ The last step of the process will allow the user to review their feedback. Users
 
 [x] - Display all of the existing feedback at the route `/admin`.
 [x] - The most recently added feedback should appear at the top of the list. 
-Allow the user to delete existing feedback. Prompt the user to confirm prior to deleting the feedback from the database.
+[x] - Allow the user to delete existing feedback. Prompt the user to confirm prior to deleting the feedback from the database.
 
 ![display feedback](wireframes/admin.png)
 

@@ -1,8 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import '../styles.css';
 import DeleteFeedback from '../DeleteFeedback/DeleteFeedback';
 
@@ -49,7 +47,7 @@ const Admin = ({fetchFeedback}) => {
                         <br />
                         <br />
                         <div className="button">
-                           <DeleteFeedback />
+                           <DeleteFeedback feedback={feedback} fetchFeedback={fetchFeedback}/>
                         </div>
                         <br />
                     </div>
