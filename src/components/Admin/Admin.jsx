@@ -1,17 +1,20 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { useEffect } from 'react';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { useEffect, useState } from 'react';
 import '../styles.css';
+import DeleteFeedback from '../DeleteFeedback/DeleteFeedback';
 
 const Admin = ({fetchFeedback}) => {
     const feedbackList = useSelector(store => store.feedbackList);
+    const [alert, setAlert] = useState({
+        message: '',
+        isLoading: false
+    })
     
     // GET request on page load
     useEffect(() => {
         fetchFeedback();
-    })
+    }, []);
 
     return (
         <>
@@ -42,6 +45,10 @@ const Admin = ({fetchFeedback}) => {
                         <br />
                         {feedback.comments}
                         <br />
+                        <br />
+                        <div className="button">
+                           <DeleteFeedback feedback={feedback} fetchFeedback={fetchFeedback}/>
+                        </div>
                         <br />
                     </div>
                 ))}
