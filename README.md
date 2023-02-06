@@ -45,7 +45,21 @@ It tracks the progress of where the user is at and after a page has been "comple
 Navigation becomes clickable once the user reaches the review page and all forms have been completed. They can then click on the section they want to go back and update, using the status bar.
 If a user goes back to edit feedback on a specific page, the button text becomes "update" instead of "next", and when it is clicked, it goes back to the review page instead of the next form page.
 
+## Stretch Goal #2 - Styling
+I added CSS to style the layout and over appearance. I also utilized different buttons available from Material UI. I would like to spend more time on the styling and incorporating Material UI in this project. There are endless styling options.
+
+## Stretch Goal #3 - Admin Page
+I created a component Admin, routed at /admin. On this page a get request to the data base is made, which is bringing back all feedback data that has been submitted. It is using the .map function to access the individual data and appends it to the dom with all the feedback data in it's own div.
+The admin page is accessible through the "Admin" link provided in the top-left of all the form components
+On the admin page, I included a link to return back to the "home page", also located in the top-left. 
+
+## Stretch Goal #4 - Delete Feature
+I needed a way to allow admin to delete feedback that they no longer wanted on the db.
+To do this, I added Material UI button to each of the feedback items that is getting appended to the DOM on the admin page.
+The delete button utilizes window.map in order to alert with a delete confirmation. If the user confirms delete, an axios request is made with the ID of that feedback item and that item is then deleted from the db. The fetchFeedback function is then called which makes an axios get request to the db and retrieves/appends the updated data.
+
 # Duration:
+    Total approx. hours: 17.5
 
     [BASE GOALS]
     (approx. 6 hours for base goals)
@@ -67,6 +81,9 @@ If a user goes back to edit feedback on a specific page, the button text becomes
     - stopped (plenty more I could do with styling!)
         11:!5am February 5, 2023
 
+    (approx. 4 hrs for stretch 3, 4 and cleaning up other code)
+    - February 6, 2023
+
 # Prerequisites
     - axios
     - express
@@ -74,7 +91,7 @@ If a user goes back to edit feedback on a specific page, the button text becomes
     - react
     - react-redux
     - react-router-dom
-
+    - ?
 
 # Installation
     npm install
