@@ -91,7 +91,6 @@ The delete button utilizes window.map in order to alert with a delete confirmati
     - react
     - react-redux
     - react-router-dom
-    - ?
 
 # Installation
     npm install
@@ -112,4 +111,4 @@ The query in the `data.sql` file is set up to create the necessary table and pop
 
 
 ## Built With
-React, React-Redux, React-Router-Dom, SQL, axios, javaScript, html, css, nodejs, express
+React, React-Redux, React-Router-Dom, PostgreSQL, SQL, axios, javaScript, html, css, nodejs, express, PG, Material UI

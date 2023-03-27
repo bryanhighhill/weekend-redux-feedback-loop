@@ -10,8 +10,7 @@ const Review = ({fetchFeedback}) => {
     const understanding = useSelector(store => store.understanding);
     const support = useSelector(store => store.support);
     const comments = useSelector(store => store.comments);
-    const changeFeedback = useSelector(store => store.changeFeedback);
-    const dispatch = useDispatch();
+    // const changeFeedback = useSelector(store => store.changeFeedback);
     const history = useHistory();
 
 const newFeedback = {
